@@ -1,0 +1,50 @@
+﻿@model Tirelires.DetailsCommande
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetailsCommande</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Commande.StatutCommande)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Commande.StatutCommande)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produit.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produit.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantite)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

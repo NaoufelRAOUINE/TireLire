@@ -1,0 +1,202 @@
+﻿@model IEnumerable<Tirelires.Produit>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    a:hover, a:visited, a:active {
+
+        text-decoration: none;
+
+    }
+    a:hover {
+        color: chocolate
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .card-price {
+        font-size: 2rem
+    }
+    .card {
+        border-top: none;
+        border-right: none;
+        border-left: none;
+    }
+    
+   
+    .checked {
+        color: orange;
+    }
+    span.stars, span.stars span {
+        display: block;
+        background: url(stars.png) 0 -16px repeat-x;
+        width: 80px;
+        height: 16px;
+    }
+
+        span.stars span {
+            background-position: 0 0;
+        } 
+
+             
+</style>
+<script>
+    $.fn.stars = function() {
+    return $(this).each(function() {
+        // Get the value
+        var val = 5;
+        //parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
+    }
+    $(function () {
+        $('span.stars').stars();
+    });
+</script>
+<h2>Produits</h2>
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+
+
+
+    <a class="card" href="@Url.Action("Details", "Produit", new { Id = item.Id })">
+        
+        <img class="card-img-top" src="@Url.Content(item.URLImage)" alt="image non trouvée" />
+        <div class="card-body">
+
+            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nom)</h5>
+
+            <p class="card-text">
+                @Html.DisplayFor(modelItem => item.Description)
+            </p>
+            @{float s = 0;
+                foreach (var a in item.Avis)
+                {
+
+                    s = s + a.Note;
+                }
+            }
+            @if (item.Avis.Count() != 0)
+            {
+                <input type="text" value="@(s / item.Avis.Count())" /><br />
+            }
+            
+            @*<input type="text" value="2" /><br />
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>*@
+
+            <p class="card-price text-center">@Html.DisplayFor(modelItem => item.Prix) €</p>
+
+        </div>
+
+    </a>
+        
+     }
+</div>
+    
+    @*<table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fournisseur.Nom)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nom)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActived)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Prix)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UnitsInStock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Poids)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.URLImage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hauteur)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Largeur)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Longueur)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Capacite)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Couleur)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th></th>
+
+                </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fournisseur.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActived)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prix)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitsInStock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Poids)
+                    </td>
+                    <td>
+        @Html.DisplayFor(modelItem => item.URLImage)
+        <img src="@Url.Content(item.URLImage)" alt="image non trouvée" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hauteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Largeur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longueur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Capacite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Couleur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("+ Panier", "AjouterAuPanier", "Panier", new { id = item.Id }, null)
+        </td>
+        </tr>
+        }
+
+        </table>*@
