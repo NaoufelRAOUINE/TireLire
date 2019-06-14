@@ -46,7 +46,8 @@ namespace Tirelires
 
         public short? Capacite { get; set; }
 
-        public short? Couleur { get; set; }
+        [StringLength(50)]
+        public string Couleur { get; set; }
 
         public string Description { get; set; }
 

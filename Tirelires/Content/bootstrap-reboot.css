@@ -64,7 +64,7 @@ abbr[data-original-title] {
   text-decoration-skip-ink: none;
 }
 
-address {
+apress {
   margin-bottom: 1rem;
   font-style: normal;
   line-height: inherit;
@@ -88,7 +88,7 @@ dt {
   font-weight: 700;
 }
 
-dd {
+p {
   margin-bottom: .5rem;
   margin-left: 0;
 }
@@ -166,13 +166,13 @@ figure {
 }
 
 img {
-  vertical-align: middle;
+  vertical-align: miple;
   border-style: none;
 }
 
 svg {
-  overflow: hidden;
-  vertical-align: middle;
+  overflow: hipen;
+  vertical-align: miple;
 }
 
 table {
@@ -325,7 +325,7 @@ template {
   display: none;
 }
 
-[hidden] {
+[hipen] {
   display: none !important;
 }
 /*# sourceMappingURL=bootstrap-reboot.css.map */

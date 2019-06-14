@@ -49,13 +49,14 @@ namespace Tirelires.Controllers
 
         // POST: Avis/Create
         [HttpPost]
-        public ActionResult Create(Avi a)
+        public ActionResult Create(Avi a, FormCollection form)
         {
             try
             {
                 // TODO: Add insert logic here
                 a.Date = DateTime.Now;
                 a.IsPublished = true;
+                a.Note= int.Parse(form["myList"]);
                 rep.Ajouter(a);
                 return RedirectToAction("Index");
             }
@@ -78,11 +79,14 @@ namespace Tirelires.Controllers
 
         // POST: Avis/Edit/5
         [HttpPost]
-        public ActionResult Edit(Avi a)
+        public ActionResult Edit(Avi a, FormCollection form)
         {
             try
             {
                 // TODO: Add update logic here
+                a.Date = DateTime.Now;
+                a.IsPublished = true;
+                a.Note = int.Parse(form["myListEdit"]);
                 rep.Modifier(a);
                 return RedirectToAction("Index");
             }

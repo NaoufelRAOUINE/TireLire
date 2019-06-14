@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         
         <th>
@@ -77,7 +77,7 @@
         </td>
         <td>
             @*@Html.DisplayFor(modelItem => item.URLImage)*@
-            <img src="@Url.Content(item.URLImage)" alt="image non trouvée"/>
+            <img src="@Url.Content(item.URLImage)" alt="image non trouvée" height="200"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Hauteur)

@@ -57,12 +57,17 @@ namespace Tirelires.Controllers
             //Initialiser un Rep commande
             Commande Panier = (Commande)Session["panier"];
             IRepository<Commande> repCommande = new EFRepository<Commande>();
+            foreach (DetailsCommande item in Panier.DetailsCommandes)
+            {
+                item.Prix = item.Produit.Prix * item.Quantite;
+                item.Produit = null;
+            }
             //ajouter panier dans les commandes
             repCommande.Ajouter(Panier);
             //panier a vider
             Session["panier"] = null;
 
-            return RedirectToAction("Index", "Produit");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Incrementer(int IdProduit)
@@ -71,7 +76,19 @@ namespace Tirelires.Controllers
             DetailsCommande detail = Panier.DetailsCommandes.Where(d => d.IdProduit == IdProduit).First();
             detail.Quantite++;
             Session["panier"] = Panier;
-            return View( detail);
+            //return View( detail);
+            return RedirectToAction("Index", "Panier");
+        }
+
+        public ActionResult Decrementer(int IdProduit)
+        {
+            Panier = (Commande)Session["panier"];
+            DetailsCommande detail = Panier.DetailsCommandes.Where(d => d.IdProduit == IdProduit).First();
+            if(detail.Quantite>0)
+            detail.Quantite--;
+            Session["panier"] = Panier;
+            //return View( detail);
+            return RedirectToAction("Index", "Panier");
         }
 
         // GET: Panier

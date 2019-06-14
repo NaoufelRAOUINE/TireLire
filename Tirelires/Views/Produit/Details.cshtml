@@ -9,115 +9,89 @@
 <div>
     <h4>Produit</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Fournisseur.Nom)
-        </dt>
+    <div class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Fournisseur.Nom)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
 
-        <dd>
+        @*@Html.DisplayFor(model => model.URLImage)*@
+        <img src="@Url.Content(Model.URLImage)" alt="image non trouvée" />
+        <p class="float-right">
+            @Html.ActionLink("Ajouter au Panier", "AjouterAuPanier", "Panier", new { id = Model.Id }, null)
+        </p>
+        <h6>
             @Html.DisplayFor(model => model.Nom)
-        </dd>
+        </h6>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActived)
-        </dt>
+        <p class="text-muted">
+            de  @Html.DisplayFor(model => model.Fournisseur.Nom)
 
-        <dd>
-            @Html.DisplayFor(model => model.IsActived)
-        </dd>
+        </p>
+        <p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Prix)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Prix)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitsInStock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitsInStock)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Poids)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Poids)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.URLImage)
-        </dt>
-
-        <dd>
-            @*@Html.DisplayFor(model => model.URLImage)*@
-            <img src="@Url.Content(Model.URLImage)" alt="image non trouvée" />
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hauteur)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hauteur)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Largeur)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Largeur)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Longueur)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Longueur)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Capacite)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Capacite)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Couleur)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Couleur)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
             @Html.DisplayFor(model => model.Description)
-        </dd>
+        </p>
 
-    </dl>
+
+        <p>
+            @Html.DisplayNameFor(model => model.Prix) :
+            <span class="font-weight-bold">
+                @Html.DisplayFor(model => model.Prix)€
+            </span>
+        </p>
+
+
+
+    <p>
+        @Html.DisplayNameFor(model => model.UnitsInStock) : @Html.DisplayFor(model => model.UnitsInStock)
+    </p>
+
+
+
+    <p>
+        @Html.DisplayNameFor(model => model.Poids)
+        :
+        @Html.DisplayFor(model => model.Poids)
+
+    <p>
+        @Html.DisplayNameFor(model => model.Hauteur)
+
+        :
+
+        @Html.DisplayFor(model => model.Hauteur)
+
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Largeur)
+
+        :
+        @Html.DisplayFor(model => model.Largeur)
+
+    </p>
+
+    <p>
+        @Html.DisplayNameFor(model => model.Longueur)
+        :
+        @Html.DisplayFor(model => model.Longueur)
+    </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Capacite)
+        :
+        @Html.DisplayFor(model => model.Capacite)
+    </p>
+
+    <p>
+        @Html.DisplayNameFor(model => model.Couleur)
+        :
+        @Html.DisplayFor(model => model.Couleur)
+    </p>
+
+
+
+
+    </div>
+    
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>
